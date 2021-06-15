@@ -1,36 +1,33 @@
 import {PureComponent} from "react";
-import FilterableProductTable from "./FilterableProductTable";
-
-const API_URL = 'http://www.amock.io/api/vd/products';
+import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
+import Home from "./Home";
+import Products from "./products";
+import About from "./about";
 
 class App extends PureComponent {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            products: [],
-            isLoading: true,
-        };
-    }
-
     render() {
-        if (this.state.isLoading) {
-            return <p>Iltmos kutib turing yuklanvoti...</p>
-        } else {
-            return (<FilterableProductTable products={this.state.products}/>)
-        }
-
-    }
-    componentDidMount() {
-        fetch(API_URL)
-            .then(response => response.json())
-            .then(data => {
-                let jsonData = eval(  '(' + data + ')');
-                this.setState({products: jsonData, isLoading:false});
-            })
-            .catch(error =>{
-            this.setState({error, isLoading: false})
-            });
+        return (
+            <BrowserRouter>
+                <div>
+                    <ul>
+                        <li>
+                            <Link to="/"> </Link>
+                        </li>
+                        <li>
+                            <Link to="/products">Tovarlar</Link>
+                        </li>
+                        <li>
+                            <Link to="/about">Biz haqimizda</Link>
+                        </li>
+                    </ul>
+                    <Switch>
+                        <Route exact path="/" component={Home}/>
+                        <Route exact path="/products" component={Products}/>
+                        <Route exact path="/about" component={About}/>
+                    </Switch>
+                </div>
+            </BrowserRouter>
+        )
     }
 }
 

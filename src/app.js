@@ -11,7 +11,7 @@ class App extends PureComponent {
                 <div>
                     <ul>
                         <li>
-                            <Link to="/"> </Link>
+                            <Link to="/">Home</Link>
                         </li>
                         <li>
                             <Link to="/products">Tovarlar</Link>

@@ -10,7 +10,7 @@ class SearchBar extends PureComponent {
         this.props.onFilterTextChange(e.target.value);
     }
 
-    handleInStockChange = (e) =>{
+    handleInStockChange = (e) => {
         this.props.onInStockChange(e.target.value);
     }
 

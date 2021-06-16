@@ -13,10 +13,10 @@ class ProducTable extends PureComponent {
 
         const rows = [];
         this.props.products.forEach((product) => {
-            if (product.name.indexOf(filterText.toLowerCase()) === -1){
+            if (product.name.indexOf(filterText.toLowerCase()) === -1) {
                 return;
             }
-            if (inStockOnly && !product.stocked){
+            if (inStockOnly && !product.stocked) {
                 return;
             }
             rows.push(<ProductRow product={product} key={product.name}/>)
